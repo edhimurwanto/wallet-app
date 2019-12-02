@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Node.Js Applications API",
+        "description": "Documentations Node.Js Applications API",
+        "license": {
+            "name": "myname",
+            "url": "https://opensource.org/licenses/myname"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Customers",
+            "description": "API for customers in the system"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/customers": {
+            "post": {
+                "tags": [
+                    "Customers"
+                ],
+                "description": "Create new customer in system",
+                "summary": "Create new customer.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "body",
+                        "description": "Customer that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Customer is created",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update customer with give ID",
+                "tags": [
+                    "Customers"
+                ],
+                "parameters": [
+                    {
+                        "name": "CustomerDTO",
+                        "in": "body",
+                        "description": "Customer with new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/CustomerDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer is updated",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get list of customers.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customers"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of customer that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get customer with given ID",
+                "responses": {
+                    "200": {
+                        "description": "Customer is found",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete customer with given ID",
+                "tags": [
+                    "Customers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer is deleted",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Customer": {
+            "required": [
+                "fullname",
+                "email",
+                "birthdate"
+            ],
+            "properties": {
+                "fullname": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "email": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "birthdate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "CustomerDTO": {
+            "required": [
+                "id",
+                "fullname",
+                "email",
+                "birthdate"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "fullname": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "email": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "birthdate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "Customers": {
+            "type": "array",
+            "$ref": "#/definitions/Customer"
+        }
+    }
+}
