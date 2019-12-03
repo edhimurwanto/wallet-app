@@ -24,6 +24,11 @@ const CustomerSchema = new EntitySchema({
             length: 100,
             nullable: false,
         },
+        password: {
+            type: 'varchar',
+            length: 100,
+            nullable: false
+        },
         birthdate: {
             type: 'date',
             nullable: false,
@@ -38,7 +43,7 @@ const CustomerSchema = new EntitySchema({
             type: 'timestamp',
             updateDate: true,
         },
-    }
+    },
 });
 
 export default CustomerSchema;
