@@ -13,10 +13,24 @@ createConnection()
             const swaggerUi = require('swagger-ui-express');
             const swaggerDocument = require('./config/swagger.json');
             const morgan = require('morgan');
+            const cookieParser = require('cookie-parser');
+            const session = require('express-session');
 
             app.use(morgan('dev'));
             app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
             app.use(express.json());
+            app.use(cookieParser());
+
+            app.use(session({
+                key: 'foo',
+                secret: process.env.SECRET_KEY,
+                resave: false,
+                saveUninitialized: false,
+                cookie: {
+                    expires: 600000
+                }
+            }));
+
             app.use(AppRouter);
             
             app.listen(process.env.APP_PORT, () => {
