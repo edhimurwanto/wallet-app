@@ -2,33 +2,27 @@
 Simple wallet-app project
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
 ```
-Give examples
+git clone https://github.com/edhiuchiha/wallet-app.git
+cd wallet-app
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Install the dependencies with npm command bellow :
 
 ```
-Give the example
+npm install --save
 ```
-
-And repeat
-
+Create file .env and copy source code from .env.example, 
+make sure that database is exist and the configuration is valid.
+Then running application with command bellow.
 ```
-until finished
+npm run start:dev
 ```
+If application successfully running, then command will show log like this.
 
-End with an example of getting some data out of the system or using it for a little demo
+![Alt text](https://github.com/edhiuchiha/wallet-app/src/assets/launch.png)
 
 ## Running the tests
 
@@ -70,7 +64,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **@edhi.uchiha** - *Initial work* - [PurpleBooth](https://github.com/edhiuchiha)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
