@@ -26,7 +26,13 @@ export default Router()
 
     .post('/', async (req, res) => {
         try {
-            const created = await transactionService.create(req.body);
+            let payload = {
+                ...req.body,
+                sender : req.session.user
+            }
+            console.log(payload);
+            
+            const created = await transactionService.create(payload);
 
             res.status(201).json(created);
         } catch (error) {

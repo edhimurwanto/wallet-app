@@ -19,23 +19,35 @@ export default class TransactionService {
     }
 
     async create(transactionData){
-        const { senderId, receiverId, type, amount } = transactionData;
+        let { sender, receiver, type, amount } = transactionData;
 
-        const sender = await customerService.findOne(senderId);
-        const receiver = await customerService.findOne(receiverId);
+        receiver = await customerService.findOne(receiver);
 
-        if(!sender) throw new Error("Invalid sender id.");
         if(!receiver) throw new Error("Invalid receiver id.");
+
+        this.amountCheck(sender, amount);
 
         const payload = {
             type,
             amount,
-            senderId,
-            receiverId,
+            sender,
+            receiver,
         }
 
-        return this.transactionRepository().save(payload);
+        console.log(receiver);
+        
+        sender.balance -= amount;
+        receiver.balance = Number(receiver.balance) + Number(amount);
+        const transaction = await this.transactionRepository().save(payload);
 
+        await customerService.update(sender); 
+        await customerService.update(receiver);
+        return transaction;
+
+    }
+
+    amountCheck(sender, amount){
+        if(amount > sender.balance) throw new Error('Incuficient balance.');
     }
 
 }

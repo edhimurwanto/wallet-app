@@ -1,6 +1,5 @@
 import { EntitySchema } from 'typeorm';
 import Transaction from '../../models/transaction.model';
-import Customer from '../../models/customer.model';
 
 const TransactionSchema = new EntitySchema({
     name: 'Transaction',
@@ -39,13 +38,23 @@ const TransactionSchema = new EntitySchema({
             type: 'timestamp',
             updateDate: true,
         },
-        senderId: {
-            type: "varchar"
-        },
-        receiverId: {
-            type: "varchar"
-        }
     },
+    relations: {
+        sender: {
+            target: 'Customer',
+            type: 'many-to-one',
+            joinTable: true,
+            inverseSide: 'sender',
+            eager: true
+        },
+        receiver: {
+            target: 'Customer',
+            type: 'many-to-one',
+            joinTable: true,
+            inverseSide: 'receiver',
+            eager: true
+        }
+    }
 });
 
 export default TransactionSchema;
