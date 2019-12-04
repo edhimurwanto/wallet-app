@@ -33,6 +33,11 @@ const CustomerSchema = new EntitySchema({
             type: 'date',
             nullable: false,
         },
+        balance: {
+            type: 'int',
+            nullable: false,
+            default: 0
+        },
         createdAt: {
             name: 'created_at',
             type: 'timestamp',

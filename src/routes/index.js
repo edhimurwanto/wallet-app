@@ -7,8 +7,8 @@ import SessionChecker from '../middleware/auth.middleware';
 
 export default express.Router()
     .use('/auth', AuthRouter)
-    .use(SessionChecker)
     .use('/customers', CustomerRoute)
+    .use(SessionChecker)
     .use('/transactions', TransactionRoute)
     .use((req, res, next) => {
         res.status(404).json({message: 'Not found.'});
