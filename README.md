@@ -22,7 +22,7 @@ npm run start:dev
 ```
 If application successfully running, then command will show log like this.
 
-![Alt text](https://github.com/edhiuchiha/wallet-app/src/assets/launch.png)
+![Alt text](https://github.com/edhiuchiha/wallet-app/tree/master/src/assets/launch.png)
 
 ## Running the tests
 
