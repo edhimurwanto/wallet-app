@@ -38,6 +38,11 @@ const CustomerSchema = new EntitySchema({
             nullable: false,
             default: 0
         },
+        points: {
+            type: 'int',
+            nullable: false,
+            default: 0,
+        },
         createdAt: {
             name: 'created_at',
             type: 'timestamp',

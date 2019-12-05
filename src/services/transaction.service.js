@@ -33,12 +33,16 @@ export default class TransactionService {
             sender,
             receiver,
         }
-
-        console.log(receiver);
         
         sender.balance -= amount;
         receiver.balance = Number(receiver.balance) + Number(amount);
         const transaction = await this.transactionRepository().save(payload);
+
+        if(!transaction){
+            throw new Error('Internal Server Error');
+        }
+
+        sender.points += await this.pointCalculations(amount);
 
         await customerService.update(sender); 
         await customerService.update(receiver);
@@ -48,6 +52,12 @@ export default class TransactionService {
 
     amountCheck(sender, amount){
         if(amount > sender.balance) throw new Error('Incuficient balance.');
+    }
+
+    pointCalculations(amount){
+        if(amount >= 10000){
+            return Number(amount)/10000 * 5;
+        } else return 0;
     }
 
 }
