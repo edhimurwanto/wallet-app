@@ -133,6 +133,105 @@
                     }
                 }
             }
+        },
+        "/transactions": {
+            "post": {
+                "tags": [
+                    "Transactions"
+                ],
+                "description": "Create new transaction in system",
+                "summary": "Create new transaction.",
+                "parameters": [
+                    {
+                        "name": "transaction",
+                        "in": "body",
+                        "description": "Transaction that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Transaction is created",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Get list of transactions.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Transactions"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of transaction that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Get transaction with given ID",
+                "responses": {
+                    "200": {
+                        "description": "Transaction is found",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Login to system.",
+                "summary": "Login to system.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Login credentials.",
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login success",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -159,11 +258,11 @@
                     "type": "string",
                     "format": "date"
                 },
-                "balance" : {
-                    "type" :"number"
+                "balance": {
+                    "type": "number"
                 },
-                "points" : {
-                    "type" :"number"
+                "points": {
+                    "type": "number"
                 }
             }
         },
@@ -196,6 +295,42 @@
         "Customers": {
             "type": "array",
             "$ref": "#/definitions/CustomerDTO"
+        },
+        "Transaction": {
+            "required": [
+                "type",
+                "amount",
+                "receiver"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "receiver": {
+                    "type": "string"
+                }
+            }
+        },
+        "Transactions": {
+            "type": "array",
+            "$ref": "#/definitions/Transaction"
+        },
+        "Login": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
         }
     }
 }
