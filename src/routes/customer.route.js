@@ -13,6 +13,7 @@ export default Router()
             res.status(500).json({ message: error.message });
         }
     })
+
     .get('/:id', async (req, res) => {
         try {
             const data = await customerService.findOne(req.param.id);
@@ -22,6 +23,7 @@ export default Router()
             res.status(500).json({ message: error.message });
         }
     })
+
     .post('/', async (req, res) => {
         try {
 
@@ -34,6 +36,7 @@ export default Router()
             res.status(500).json({ message: error.message });
         }
     })
+
     .put('/', async (req, res) => {
         try {
             const customer = { ...req.body };
@@ -44,6 +47,7 @@ export default Router()
             res.status(500).json({ message: error.message });
         }
     })
+
     .delete('/:id', async (req, res) => {
         try {
             const { id } = req.params;

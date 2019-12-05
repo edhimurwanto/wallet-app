@@ -178,6 +178,22 @@
                 }
             }
         },
+        "/transactions/history": {
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Get list of customer transactions.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Transactions"
+                        }
+                    }
+                }
+            }
+        },
         "/transactions/{id}": {
             "parameters": [
                 {
@@ -229,6 +245,19 @@
                         "schema": {
                             "$ref": "#/definitions/Customer"
                         }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout from the system",
+                "responses": {
+                    "200": {
+                        "description": "Logout success"
                     }
                 }
             }
