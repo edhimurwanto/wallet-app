@@ -31,6 +31,9 @@ To show swagger API documentations, you can type this on web browser.
 ```
 http://localhost:3000/api-docs
 ```
+
+![Alt text](https://github.com/edhiuchiha/wallet-app/blob/master/src/assets/swagger-doc.png)
+## 
 You can test to run the applications with that swagger documentations.
 
 ## Running the tests
