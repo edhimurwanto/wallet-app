@@ -24,6 +24,15 @@ If application successfully running, then command will show log like this.
 
 ![Alt text](https://github.com/edhiuchiha/wallet-app/blob/master/src/assets/launch.png)
 
+## Swagger Documentations
+
+To show swagger API documentations, you can type this on web browser.
+
+```
+http://localhost:3000/api-docs
+```
+You can test to run the applications with that swagger documentations.
+
 ## Running the tests
 
 Explain how to run the automated tests for this system

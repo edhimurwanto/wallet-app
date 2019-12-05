@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Node.Js Applications API",
-        "description": "Documentations Node.Js Applications API",
+        "title": "Wallet-App",
+        "description": "API Documentations for Simple Wallet App with Express.js.",
         "license": {
             "name": "myname",
             "url": "https://opensource.org/licenses/myname"
@@ -158,6 +158,12 @@
                 "birthdate": {
                     "type": "string",
                     "format": "date"
+                },
+                "balance" : {
+                    "type" :"number"
+                },
+                "points" : {
+                    "type" :"number"
                 }
             }
         },
