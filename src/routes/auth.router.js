@@ -19,7 +19,7 @@ export default Router()
 
         if (req.session.user && req.cookies.foo) {
             res.clearCookie('foo').json({
-                message: 'Login succes'
+                message: 'Logout succes'
             });
         } else {
             res.status(401).json({ message: 'You are not login.' });
