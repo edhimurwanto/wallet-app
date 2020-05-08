@@ -32,7 +32,6 @@ createConnection()
             }));
 
             app.use(AppRouter);
-            
             app.listen(process.env.APP_PORT, () => {
                 console.log(`Application ${process.env.APP_NAME} successfully started on port ${process.env.APP_PORT}.`);
 
@@ -47,4 +46,3 @@ createConnection()
         console.error(err);
 
     });
-

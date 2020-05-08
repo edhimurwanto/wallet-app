@@ -2,10 +2,7 @@ import { getRepository as repository } from 'typeorm';
 import Customer from '../models/customer.model';
 import CustomerService from '../services/customer.service';
 
-const bcrypt = require('bcrypt');
-const session = require('express-session');
 const customerService = new CustomerService();
-
 
 export default class LoginService {
     customerRepository() {
